@@ -1,0 +1,927 @@
+[
+    {
+        "id": "d5d1ac02e16a847e",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "1533d345e1dc36a9",
+        "type": "ui_gauge",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "b0b2466424d96a85",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "Celsius",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "60",
+        "className": "",
+        "x": 910,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "cbd881198ad25821",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "Convert",
+        "func": "msg.payload=msg.payload.Temperature\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 460,
+        "y": 340,
+        "wires": [
+            [
+                "1533d345e1dc36a9",
+                "1cba1c03ecf32aa5",
+                "c883c624a3b90fc4",
+                "af83517ed28f54e9"
+            ]
+        ]
+    },
+    {
+        "id": "ea14ed512305484e",
+        "type": "ibmiot in",
+        "z": "d5d1ac02e16a847e",
+        "authentication": "apiKey",
+        "apiKey": "8d9dadc21a8b3d2f",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "T1",
+        "applicationId": "",
+        "deviceType": "Temp",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 190,
+        "y": 340,
+        "wires": [
+            [
+                "cbd881198ad25821"
+            ]
+        ]
+    },
+    {
+        "id": "08daf8c27126b608",
+        "type": "ibmiot in",
+        "z": "d5d1ac02e16a847e",
+        "authentication": "apiKey",
+        "apiKey": "8d9dadc21a8b3d2f",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "G1",
+        "applicationId": "",
+        "deviceType": "Gas_Sensor",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": false,
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 190,
+        "y": 440,
+        "wires": [
+            [
+                "cce26a0bf1e99e72",
+                "d4be4869ed5d4f8c",
+                "9669c4a7a1ddc6de"
+            ]
+        ]
+    },
+    {
+        "id": "cce26a0bf1e99e72",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "msg.payload=msg.payload.NO2\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 480,
+        "y": 460,
+        "wires": [
+            [
+                "152e5e18a22ea640",
+                "c0b625de4d3f7730"
+            ]
+        ]
+    },
+    {
+        "id": "d4be4869ed5d4f8c",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "msg.payload=msg.payload.CO\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 400,
+        "y": 540,
+        "wires": [
+            [
+                "574dedc96208c0aa",
+                "f3dd2fc7f39bf5f7"
+            ]
+        ]
+    },
+    {
+        "id": "9669c4a7a1ddc6de",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "msg.payload=msg.payload.CO2\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 340,
+        "y": 660,
+        "wires": [
+            [
+                "8dae8fa1a7ea7415",
+                "763a9ae51ae799ec"
+            ]
+        ]
+    },
+    {
+        "id": "152e5e18a22ea640",
+        "type": "ui_gauge",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "d2d6e984eb71a537",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Nitrogen di Oxide",
+        "label": "Percentage",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "25",
+        "className": "",
+        "x": 770,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "574dedc96208c0aa",
+        "type": "ui_gauge",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "d2d6e984eb71a537",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Carbon Mono Oxide",
+        "label": "percentage",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "3",
+        "seg2": "5",
+        "className": "",
+        "x": 760,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "8dae8fa1a7ea7415",
+        "type": "ui_gauge",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "d2d6e984eb71a537",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Carbon di Oxide",
+        "label": "Percentage",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "20",
+        "seg2": "30",
+        "className": "",
+        "x": 700,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "8a41db8811f572d9",
+        "type": "ui_form",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "label": "",
+        "group": "c8492bdcd68680a2",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Username",
+                "value": "Username",
+                "type": "text",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Email",
+                "value": "Email",
+                "type": "email",
+                "required": true,
+                "rows": null
+            },
+            {
+                "label": "Phone Number",
+                "value": "Phonenumber",
+                "type": "number",
+                "required": true,
+                "rows": null
+            }
+        ],
+        "formValue": {
+            "Username": "",
+            "Email": "",
+            "Phonenumber": ""
+        },
+        "payload": "",
+        "submit": "submit",
+        "cancel": "cancel",
+        "topic": "topic",
+        "topicType": "msg",
+        "splitLayout": "",
+        "className": "",
+        "x": 210,
+        "y": 760,
+        "wires": [
+            [
+                "40123f46207d3c68"
+            ]
+        ]
+    },
+    {
+        "id": "40123f46207d3c68",
+        "type": "cloudant out",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "cloudant": "3d10849a8821b6a7",
+        "database": "usercredentials",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 720,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "cec01e40a908c48e",
+        "type": "ui_led",
+        "z": "d5d1ac02e16a847e",
+        "order": 0,
+        "group": "b0b2466424d96a85",
+        "width": 0,
+        "height": 0,
+        "label": "Water Sprinkler",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 850,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "1cba1c03ecf32aa5",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "msg.payload=(msg.payload>45)? true: false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 240,
+        "y": 120,
+        "wires": [
+            [
+                "80a720021c12cce7"
+            ]
+        ]
+    },
+    {
+        "id": "80a720021c12cce7",
+        "type": "delay",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 120,
+        "wires": [
+            [
+                "cec01e40a908c48e"
+            ]
+        ]
+    },
+    {
+        "id": "cebd50b2ed69ccd3",
+        "type": "delay",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 180,
+        "wires": [
+            [
+                "1b0bc39e91d2d4dc"
+            ]
+        ]
+    },
+    {
+        "id": "56b6fd723b216743",
+        "type": "delay",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "pauseType": "delay",
+        "timeout": "1",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "1",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": false,
+        "allowrate": false,
+        "outputs": 1,
+        "x": 620,
+        "y": 240,
+        "wires": [
+            [
+                "dc9bb5498dd98dfc"
+            ]
+        ]
+    },
+    {
+        "id": "1b0bc39e91d2d4dc",
+        "type": "ui_led",
+        "z": "d5d1ac02e16a847e",
+        "order": 1,
+        "group": "b0b2466424d96a85",
+        "width": 0,
+        "height": 0,
+        "label": "Exhaust fan",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 850,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "dc9bb5498dd98dfc",
+        "type": "ui_led",
+        "z": "d5d1ac02e16a847e",
+        "order": 2,
+        "group": "b0b2466424d96a85",
+        "width": 0,
+        "height": 0,
+        "label": "Fire Alarm",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "#ff0000",
+                "value": "false",
+                "valueType": "bool"
+            },
+            {
+                "color": "#008000",
+                "value": "true",
+                "valueType": "bool"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "shape": "circle",
+        "showGlow": true,
+        "name": "",
+        "x": 850,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "c883c624a3b90fc4",
+        "type": "ui_chart",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "b0b2466424d96a85",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "label": "Analytics",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "Waiting for data",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#42b0ff",
+            "#aec7e8",
+            "#ff7f0e",
+            "#1adb1a",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 940,
+        "y": 380,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "763a9ae51ae799ec",
+        "type": "ui_chart",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "5a710181faf582af",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "label": "CO2 Analysis",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#df2a2a",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 700,
+        "y": 640,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0b625de4d3f7730",
+        "type": "ui_chart",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "5a710181faf582af",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "NO2 Analysis",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 740,
+        "y": 500,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "f3dd2fc7f39bf5f7",
+        "type": "ui_chart",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "group": "5a710181faf582af",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "label": "CO Analysis",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": "60",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "1",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca52c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 750,
+        "y": 580,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "af83517ed28f54e9",
+        "type": "function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "msg.payload=(msg.payload>70)? true: false;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 180,
+        "wires": [
+            [
+                "56b6fd723b216743",
+                "cebd50b2ed69ccd3"
+            ]
+        ]
+    },
+    {
+        "id": "5cd6db4b75445da3",
+        "type": "debug",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 690,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "ab2c14742c0e6cb4",
+        "type": "cloudant in",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "cloudant": "3d10849a8821b6a7",
+        "database": "usercredentials",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "Usercredentials",
+        "index": "Phonenumber",
+        "x": 460,
+        "y": 860,
+        "wires": [
+            [
+                "5cd6db4b75445da3"
+            ]
+        ]
+    },
+    {
+        "id": "7c787911c08c4fcb",
+        "type": "inject",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 860,
+        "wires": [
+            [
+                "ab2c14742c0e6cb4"
+            ]
+        ]
+    },
+    {
+        "id": "1d8c19444aee18bf",
+        "type": "debug",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 850,
+        "y": 20,
+        "wires": []
+    },
+    {
+        "id": "3c36398fb917a7c9",
+        "type": "python-function",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "func": "import requests\nurl = \"https://www.fast2sms.com/dev/bulkV2\"\npayload = \"sender_id=FSTSMS&message=Alert!&language=english&route=p&numbers=9095057479\"\nheaders = {\n'authorization': \"o0azwVFNHOM5B3hrRxdenyU2cfZujqSpYEX7t8LAgJPb9kliWCugDvo1n0kcY8TGHOt3dIQwsKpLbAJU\",\n'Content-Type': \"application/x-www-form-urlencoded\",\n'Cache-Control': \"no-cache\",\n}\nresponse = requests.request(\"POST\", url, data=payload, headers=headers)\nprint(response.text)\n",
+        "outputs": 1,
+        "x": 580,
+        "y": 20,
+        "wires": [
+            [
+                "1d8c19444aee18bf"
+            ]
+        ]
+    },
+    {
+        "id": "057ef750bef3fc86",
+        "type": "inject",
+        "z": "d5d1ac02e16a847e",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 20,
+        "wires": [
+            [
+                "3c36398fb917a7c9"
+            ]
+        ]
+    },
+    {
+        "id": "b0b2466424d96a85",
+        "type": "ui_group",
+        "name": "Temperature",
+        "tab": "477494a5baf03dbe",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "8d9dadc21a8b3d2f",
+        "type": "ibmiot",
+        "name": "IBM_IOT",
+        "keepalive": "60",
+        "serverName": "lryrya.messaging.internetofthings.ibmcloud.com",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "d2d6e984eb71a537",
+        "type": "ui_group",
+        "name": "Gas Sensor",
+        "tab": "e208207b5344b7ac",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "c8492bdcd68680a2",
+        "type": "ui_group",
+        "name": "Register Form",
+        "tab": "94803c79c48f4a14",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "3d10849a8821b6a7",
+        "type": "cloudant",
+        "host": "https://apikey-v2-2uxme1xe4ze15rnf5fh8l40eg4coz66pm8ateuwy93py:0172158934b6c3a3e8b39b0511e7af20@e8e96f53-33f3-4fd1-bb73-6fb98205f7c2-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": ""
+    },
+    {
+        "id": "5a710181faf582af",
+        "type": "ui_group",
+        "name": "Gas Analytics",
+        "tab": "e208207b5344b7ac",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "477494a5baf03dbe",
+        "type": "ui_tab",
+        "name": "Temperature",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "e208207b5344b7ac",
+        "type": "ui_tab",
+        "name": "Gas Sensor",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "94803c79c48f4a14",
+        "type": "ui_tab",
+        "name": "Register Form",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
