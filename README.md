@@ -26,9 +26,6 @@
 <h1>Project Deliverables</h1>
 <h3>
 <a href="https://wokwi.com/projects/348733898750952019">Click here to view Wokwi Simulation</a><br><br>
-<a href="https://ibmproject1234.000webhostapp.com/">Click here to View Login Page</a>
-<br><br>
-<a href="https://node-red-jleja-2022-11-04.eu-gb.mybluemix.net/ui/#!/0?socketid=R7G6-pE-IRi7B9A3AADj">Click here to View Node Red Dashboard</a>
 </h3>
 <h3>Login Page </h3>
 <img src="https://github.com/Danaendraraj-R/Industry-Specific-Intelligent-Fire-Management-System-PBL/blob/main/Final%20Deliverables/Project%20Screenshots/Node-RED%20Dashboard%20-%20Google%20Chrome%2019-11-2022%2013_52_18.png">
